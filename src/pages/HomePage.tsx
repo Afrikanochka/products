@@ -25,7 +25,7 @@ const HomePage = () => {
       color="text.secondary"
     >
       <Typography variant="h2" margin="3rem">
-        Front-end Project Advanced
+        Front-end Product Project
       </Typography>
       <Typography variant="body1" fontSize="2rem">
         You will redirect on Products in 3 seconds

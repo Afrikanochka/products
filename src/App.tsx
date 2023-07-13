@@ -6,6 +6,7 @@ import './styles/App.css';
 import { IThemeState } from "./types/IThemeState";
 import { useAppDispatch, useAppSelector } from "./hooks/reduxHooks";
 import { RootState } from "./redux/store";
+import AppRouter from "./AppRouter";
 
 function App() {
   const dispatch = useAppDispatch();
@@ -26,7 +27,7 @@ function App() {
             height: "100%",
           }}
         >
-          Hello
+          <AppRouter />
         </Box>
       </ThemeProvider>
     </div>
