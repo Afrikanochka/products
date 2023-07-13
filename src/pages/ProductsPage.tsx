@@ -2,9 +2,17 @@ import { useEffect } from "react";
 import { Box, Stack } from "@mui/material";
 
 import { useAppDispatch } from "../hooks/reduxHooks";
+import { categoriesGet, productsGet } from "../api/productsWorker";
 import Footer from "../components/footer/Footer";
 
 const ProductsPage = () => {
+  const dispatch = useAppDispatch();
+
+  useEffect(function () {
+    dispatch(productsGet(""));
+    dispatch(categoriesGet());
+  }, []);
+  
     return (
         <Stack>
       <Box
