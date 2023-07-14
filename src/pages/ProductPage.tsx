@@ -3,6 +3,7 @@ import { Box, Stack } from "@mui/material";
 import { useParams } from "react-router-dom";
 
 import { useAppDispatch, useAppSelector } from "../hooks/reduxHooks";
+import { categoriesGet, productsGet } from "../api/productsWorker";
 import Header from "../components/header/Header";
 import ProductBody from "../components/product/ProductBody";
 import Footer from "../components/footer/Footer";
@@ -10,6 +11,18 @@ import Footer from "../components/footer/Footer";
 const ProductPage = () => {
     const id: string = useParams().id || "";
     const dispatch = useAppDispatch();
+    const rights = useAppSelector(function (state) {
+      return state.credential.rights.products;
+    });
+    const isAdmin: boolean = rights.update || rights.create;
+  
+    useEffect(
+      function () {
+        dispatch(productsGet(id));
+        if(isAdmin) dispatch(categoriesGet());
+      },
+      [id]
+    );
     
     return (
         <Stack>
